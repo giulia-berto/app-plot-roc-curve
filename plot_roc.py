@@ -54,7 +54,7 @@ if __name__ == '__main__':
 	all_fpr_LAP = np.unique(np.concatenate([fpr_LAP[i] for i in range(len(csv_files))]))
 
 	# Then interpolate all ROC curves at this points
-	mean_tpr_LAP = np.zeros_like(all_fpr_LAP)
+	mean_tpr_LAP = np.zeros(len(all_fpr_LAP), dtype='S8')
 
 	for i in range(len(csv_files)):
 		mean_tpr_LAP += interp(all_fpr_LAP, fpr_LAP[i], tpr_LAP[i])
