@@ -37,7 +37,9 @@ if __name__ == '__main__':
 
 	for i, ff in enumerate(csv_files):
 
-		with open(ff, 'r') as readFile:
+		csv_file = 'csv_all/%s' %ff
+
+		with open(csv_file, 'r') as readFile:
 			reader = csv.reader(readFile)
 			lines = list(reader)
 
