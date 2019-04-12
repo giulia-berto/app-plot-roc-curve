@@ -28,12 +28,12 @@ if __name__ == '__main__':
 	csv_files = os.listdir('csv_all')
 	
 	fpr_LAP=dict()
-    tpr_LAP=dict()
-    AUC_LAP = dict()
+	tpr_LAP=dict()
+	AUC_LAP = dict()
     
-    fpr_NN=dict()
-    tpr_NN=dict()
-    AUC_NN = dict()
+	fpr_NN=dict()
+	tpr_NN=dict()
+	AUC_NN = dict()
 
 	for i, ff in enumerate(csv_files):
 
@@ -82,5 +82,4 @@ if __name__ == '__main__':
 	#plotting(fpr_NN, tpr_NN, roc_auc_NN) 
 	#print roc_auc_LAP["macro"]
 	
-
 	plot_roc_curve(fpr_LAP["macro"], tpr_LAP["macro"], AUC_LAP, fpr_NN["macro"], tpr_NN["macro"], AUC_NN, 'test.png')

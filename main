@@ -10,14 +10,14 @@ measures=`jq -r '.measures' config.json`
 
 arr_meas=()
 arr_meas+=(${measures})
-num_ex=$((${#arr_meas[@]}))
+num_ex=$((${#arr_meas[@]} - 2))
 
 echo "$num_ex target subjects found."
 
 mkdir csv_all;
 for i in `seq 1 ${num_ex}`; 
 do 
-	measure=${arr_meas[i-1]//[,\"]}
+	measure=${arr_meas[i]//[,\"]}
 	id_meas=$(jq -r "._inputs[$i-1].meta.subject" config.json | tr -d "_")
 	cp ${measure} csv_all/${id_meas}_output_FiberStats.csv;
 done
