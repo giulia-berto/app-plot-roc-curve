@@ -10,9 +10,9 @@ import matplotlib.pyplot as plt
 def plot_roc_curve(fpr_LAP, tpr_LAP, AUC_LAP, fpr_NN, tpr_NN, AUC_NN, out_fname):
    	plt.figure()
    	lw = 1
-   	plt.plot(fpr_LAP, tpr_LAP, color='darkorange', lw=lw, label='ROC curve (area = %0.2f)' %AUC_LAP)
-	plt.plot(fpr_NN, tpr_NN, color='r', lw=lw, label='ROC curve (area = %0.2f)' %AUC_NN)
-	plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
+   	plt.plot(fpr_LAP, tpr_LAP, color='y', lw=lw, label='ROC curve (area = %0.2f)' %AUC_LAP)
+	plt.plot(fpr_NN, tpr_NN, color='g', lw=lw, label='ROC curve (area = %0.2f)' %AUC_NN)
+	plt.plot([0, 1], [0, 1], color='r', lw=lw, linestyle='--')
 	plt.xlim([0.0, 1.0])
  	plt.ylim([0.0, 1.05])
 	plt.xlabel('False Positive Rate')
@@ -84,6 +84,3 @@ if __name__ == '__main__':
 	
 
 	plot_roc_curve(fpr_LAP["macro"], tpr_LAP["macro"], AUC_LAP, fpr_NN["macro"], tpr_NN["macro"], AUC_NN, 'test.png')
-
-
-	
