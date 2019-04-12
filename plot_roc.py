@@ -49,7 +49,7 @@ if __name__ == '__main__':
 		AUC_NN[i] = lines[5]
 
 	#LAP
-    all_fpr_LAP = np.unique(np.concatenate([fpr_LAP[i] for i in range(len(csv_files))]))
+	all_fpr_LAP = np.unique(np.concatenate([fpr_LAP[i] for i in range(len(csv_files))]))
 
 	# Then interpolate all ROC curves at this points
 	mean_tpr_LAP = np.zeros_like(all_fpr_LAP)
