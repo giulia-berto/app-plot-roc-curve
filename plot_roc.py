@@ -10,14 +10,14 @@ import matplotlib.pyplot as plt
 def plot_roc_curve(fpr_LAP, tpr_LAP, AUC_LAP, fpr_NN, tpr_NN, AUC_NN, out_fname):
    	plt.figure()
    	lw = 1
-   	plt.plot(fpr_LAP, tpr_LAP, color='y', lw=lw, label='ROC curve (area = %0.2f)' %AUC_LAP)
-	plt.plot(fpr_NN, tpr_NN, color='g', lw=lw, label='ROC curve (area = %0.2f)' %AUC_NN)
+   	plt.plot(fpr_LAP, tpr_LAP, color='y', lw=lw, label='auc_LAP = %0.2f' %AUC_LAP)
+	plt.plot(fpr_NN, tpr_NN, color='g', lw=lw, label='auc_NN_DR_MAM = %0.2f' %AUC_NN)
 	plt.plot([0, 1], [0, 1], color='r', lw=lw, linestyle='--')
 	plt.xlim([0.0, 1.0])
  	plt.ylim([0.0, 1.05])
 	plt.xlabel('False Positive Rate')
 	plt.ylabel('True Positive Rate')
-  	plt.title('ROC curve %s' %out_fname)
+  	plt.title('Receiver Operating Characteristic')
    	plt.legend(loc="lower right")
    	plt.savefig(out_fname)
 	#plt.show()
@@ -42,19 +42,23 @@ if __name__ == '__main__':
 		with open(csv_file, 'r') as readFile:
 			reader = csv.reader(readFile)
 			lines = list(reader)
+		#data = read_csv(csv_file)
 
-		fpr_LAP[i] = lines[0]
-		tpr_LAP[i] = lines[1]
-		AUC_LAP[i] = lines[2]
-		fpr_NN[i] = lines[3]
-		tpr_NN[i] = lines[4]
-		AUC_NN[i] = lines[5]
+		M = len(lines[0])
+		N = len(lines[3])
+
+		fpr_LAP[i] = np.array([np.float(lines[0][j]) for j in range(M)])
+		tpr_LAP[i] = np.array([np.float(lines[1][j]) for j in range(M)])
+		AUC_LAP[i] = np.float(lines[2][0])
+		fpr_NN[i] = np.array([np.float(lines[3][j]) for j in range(N)])
+		tpr_NN[i] = np.array([np.float(lines[4][j]) for j in range(N)])
+		AUC_NN[i] = np.float(lines[5][0])
 
 	#LAP
 	all_fpr_LAP = np.unique(np.concatenate([fpr_LAP[i] for i in range(len(csv_files))]))
 
 	# Then interpolate all ROC curves at this points
-	mean_tpr_LAP = np.zeros(len(all_fpr_LAP), dtype='S8')
+	mean_tpr_LAP = np.zeros_like(all_fpr_LAP)
 
 	for i in range(len(csv_files)):
 		mean_tpr_LAP += interp(all_fpr_LAP, fpr_LAP[i], tpr_LAP[i])
@@ -84,4 +88,4 @@ if __name__ == '__main__':
 	#plotting(fpr_NN, tpr_NN, roc_auc_NN) 
 	#print roc_auc_LAP["macro"]
 	
-	plot_roc_curve(fpr_LAP["macro"], tpr_LAP["macro"], AUC_LAP, fpr_NN["macro"], tpr_NN["macro"], AUC_NN, 'test.png')
+	plot_roc_curve(fpr_LAP["macro"], tpr_LAP["macro"], AUC_LAP["macro"], fpr_NN["macro"], tpr_NN["macro"], AUC_NN["macro"], 'images/roc-auc_curve.png')
