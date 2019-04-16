@@ -4,6 +4,8 @@ import numpy as np
 import csv
 from scipy import interp
 from sklearn.metrics import auc
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
 
