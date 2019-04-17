@@ -4,9 +4,12 @@
 
 [ $PBS_O_WORKDIR ] && cd $PBS_O_WORKDIR
 
-echo "setting miniconda path..."
-unset PYTHONPATH
-export PATH=/N/u/gberto/Karst/miniconda2/bin:$PATH
+#echo "setting miniconda path..."
+#unset PYTHONPATH
+#export PATH=/N/u/gberto/Karst/miniconda2/bin:$PATH
+echo "setting path for sklearn 20..."
+PYTHONPATH=/N/u/gberto/Karst/git/scikit-learn/:$PYTHONPATH
+export PYTHONPATH
 
 measures=`jq -r '.measures' config.json`
 
