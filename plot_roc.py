@@ -5,9 +5,10 @@ import csv
 from scipy import interp
 from sklearn.metrics import auc
 import matplotlib.pyplot as plt
+import json
 
 
-def plot_roc_curve(fpr_LAP, tpr_LAP, AUC_LAP, fpr_NN, tpr_NN, AUC_NN, out_fname):
+def plot_roc_curve(fpr_LAP, tpr_LAP, AUC_LAP, fpr_NN, tpr_NN, AUC_NN, tract_name):
    	plt.figure()
    	lw = 1
    	plt.plot(fpr_LAP, tpr_LAP, color='y', lw=lw, label='auc_LAP = %0.2f' %AUC_LAP)
@@ -17,9 +18,9 @@ def plot_roc_curve(fpr_LAP, tpr_LAP, AUC_LAP, fpr_NN, tpr_NN, AUC_NN, out_fname)
  	plt.ylim([0.0, 1.05])
 	plt.xlabel('False Positive Rate')
 	plt.ylabel('True Positive Rate')
-  	plt.title('Receiver Operating Characteristic')
+  	plt.title('Receiver Operating Characteristic %s' %tract_name)
    	plt.legend(loc="lower right")
-   	plt.savefig(out_fname)
+   	plt.savefig('images/roc-auc_curve_%s.png' %tract_name)
 	#plt.show()
 
 
@@ -88,4 +89,8 @@ if __name__ == '__main__':
 	#plotting(fpr_NN, tpr_NN, roc_auc_NN) 
 	#print roc_auc_LAP["macro"]
 	
-	plot_roc_curve(fpr_LAP["macro"], tpr_LAP["macro"], AUC_LAP["macro"], fpr_NN["macro"], tpr_NN["macro"], AUC_NN["macro"], 'images/roc-auc_curve.png')
+	with open('config.json') as f:
+	    data = json.load(f)
+	tract_name = data["_inputs"][2]["tags"][0].encode("utf-8")
+	
+	plot_roc_curve(fpr_LAP["macro"], tpr_LAP["macro"], AUC_LAP["macro"], fpr_NN["macro"], tpr_NN["macro"], AUC_NN["macro"], tract_name)
