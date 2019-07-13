@@ -24,6 +24,7 @@ done
 echo "Computing ROC curves"
 mkdir images;
 singularity exec -e docker://brainlife/dipy:0.16.0 python plot_roc.py
+cp config.json images.json
 
 if [ -z "$(ls -A -- "images")" ]; then    
 	echo "Computation failed."
