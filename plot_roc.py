@@ -21,8 +21,9 @@ def plot_roc_curve(fpr_LAP, tpr_LAP, AUC_LAP, fpr_NN, tpr_NN, AUC_NN, tract_name
 	plt.xlabel('False Positive Rate')
 	plt.ylabel('True Positive Rate')
   	plt.title('Receiver Operating Characteristic %s' %tract_name)
-   	plt.legend(loc="lower right")
+   	plt.legend(loc="lower right", fontsize='medium')
    	plt.savefig('images/roc-auc_curve_%s.png' %tract_name)
+    plt.savefig('roc-auc_curve_%s.pdf' %tract_name)
 	#plt.show()
 
 
