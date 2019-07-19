@@ -2,14 +2,8 @@
 #PBS -k o
 #PBS -l nodes=1:ppn=4,walltime=00:10:00
 
-[ $PBS_O_WORKDIR ] && cd $PBS_O_WORKDIR
-
-#echo "setting miniconda path..."
-#unset PYTHONPATH
-#export PATH=/N/u/gberto/Karst/miniconda2/bin:$PATH
-echo "setting path for sklearn 20..."
-PYTHONPATH=/N/u/gberto/Karst/git/scikit-learn/:$PYTHONPATH
-export PYTHONPATH
+set -e
+set -x
 
 measures=`jq -r '.measures' config.json`
 
@@ -29,7 +23,8 @@ done
 
 echo "Computing ROC curves"
 mkdir images;
-python plot_roc.py
+singularity exec -e docker://brainlife/dipy:0.16.0 python plot_roc.py
+cp config.json images.json
 
 if [ -z "$(ls -A -- "images")" ]; then    
 	echo "Computation failed."
