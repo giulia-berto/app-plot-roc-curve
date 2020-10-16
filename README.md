@@ -25,7 +25,7 @@ We kindly ask that you cite the following articles when publishing papers and co
 
 ### On Brainlife.io
 
-You can submit this App online at [https://doi.org/10.25663/bl.app.174](https://doi.org/10.25663/bl.app.174) via the "Execute" tab. WARNING: this app can be run ONLY after the app https://doi.org/10.25663/brainlife.app.174. This App was used specifically for a Reproducibility Study and has been deprecated.
+You can submit this App online at [https://doi.org/10.25663/bl.app.180](https://doi.org/10.25663/bl.app.180) via the "Execute" tab. WARNING: this app can be run ONLY after the app https://doi.org/10.25663/brainlife.app.174. This App was used specifically for a Reproducibility Study and has been deprecated.
 
 ### Running Locally (on your machine)
 
