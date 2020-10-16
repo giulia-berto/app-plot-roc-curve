@@ -2,7 +2,7 @@
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.180-blue.svg)](https://doi.org/10.25663/brainlife.app.180)
 
 # app-plot-roc-curve
-This App plots ROC-AUC curves for multi-LAP and multi-NN to compare the two segmentation methods. ROC-AUC analysis is a standard tool for test validation in the field of medical imaging segmentation which plots the sensitivity/specificity curve of the method under evaluation for different cut-off points. In our case, the cut-off points of the ROC curve are represented by the probability of each streamline to belong to the bundle of interest. Performances of multiple methods can be compared through the scalar value represented by the Area Under the Curve (AUC). Higher AUC values mean better segmentation.
+This App plots ROC-AUC curves for multi-LAP and multi-NN to compare the two streamline-based bundle segmentation methods. ROC-AUC analysis is a standard tool for test validation in the field of medical imaging segmentation which plots the sensitivity/specificity curve of the method under evaluation for different cut-off points. In our case, the cut-off points of the ROC curve are represented by the probability of each streamline to belong to the bundle of interest. Performances of multiple methods can be compared through the scalar value represented by the Area Under the Curve (AUC). Higher AUC values mean better segmentation.
 
 ### Authors
 - Giulia Bertò (giulia.berto.4@gmail.com)
