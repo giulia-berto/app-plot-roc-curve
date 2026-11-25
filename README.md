@@ -2,6 +2,35 @@
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.180-blue.svg)](https://doi.org/10.25663/brainlife.app.180)
 
 # app-plot-roc-curve
+
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+> **Plot ROC-AUC curve for multi-LAP and multi-NN. Warning: this app can be run ONLY after the app https://doi.org/10.25663/brainlife.app.174. This App was used specifically for a Replicability Study and has been deprecated.**
+
+Deprecated App used for a replicability study. Collects per-subject CSV files with false/true positive rates and AUC for multi-LAP and multi-NN tract segmentation (from brainlife.app.174), interpolates and averages the ROC curves across subjects, and plots the mean ROC-AUC curves for one tract. It only works on the output of that specific App.
+
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/tractmeasures` |
+| 📤 **Outputs** | `generic/images` |
+| 🐳 **Container** | `brainlife/dipy:0.16.0` |
+| ⚙️ **Resources** | 4 CPUs · 0.17 h walltime |
+| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.180](https://doi.org/10.25663/brainlife.app.180) |
+
+#### 📥 Inputs
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `0` | `neuro/tractmeasures` | yes | csv file reporting fdr, tdr and AUC for multi-LAP and multi-NN |
+
+#### 📤 Outputs
+
+| Output | Datatype | Description |
+|---|---|---|
+| `1` | `generic/images` | PNG plot of the mean ROC curves and AUCs for multi-LAP and multi-NN for the tract. |
+
+<!-- brainlife-app:end -->
+
 This App plots ROC-AUC curves for multi-LAP and multi-NN to compare the two streamline-based bundle segmentation methods. ROC-AUC analysis is a standard tool for test validation in the field of medical imaging segmentation which plots the sensitivity/specificity curve of the method under evaluation for different cut-off points. In our case, the cut-off points of the ROC curve are represented by the probability of each streamline to belong to the bundle of interest. Performances of multiple methods can be compared through the scalar value represented by the Area Under the Curve (AUC). Higher AUC values mean better segmentation.
 
 ### Authors
